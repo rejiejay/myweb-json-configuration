@@ -13,6 +13,7 @@ var init = {
         input.init()
         submit.init()
         template.init()
+        format.init()
     },
 
     /**
@@ -23,6 +24,7 @@ var init = {
         submit.btn_dom = document.getElementById('my-submit')
         submit.btn_dom = document.getElementById('my-submit')
         template.btn_dom = document.getElementById('my-template')
+        format.btn_dom = document.getElementById('my-format')
     },
 
     /**
@@ -62,7 +64,7 @@ var input = {
     },
 
     set: function set(value) {
-        this.dom.innerText = value
+        this.dom.innerHTML = value
     },
 
     verify: function verify() {
@@ -155,6 +157,8 @@ var submit = {
         if (verify.isCorrect === false) {
             return alert(verify.msg)
         }
+
+        console.log('submit', data)
     }
 }
 
@@ -200,5 +204,24 @@ var template = {
             input.set(handleString)
         }
         insert()
+    }
+}
+
+/**
+ * 格式化
+ */
+var format = {
+    btn_dom: null,
+
+    init: function init() {
+        var self = this
+
+        this.btn_dom.onclick = function () {
+            self.handle()
+        }
+    },
+
+    handle: function handle() {
+        input.format()
     }
 }
